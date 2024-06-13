@@ -1,15 +1,20 @@
 import { Request, Response } from "express";
 import axios from "axios";
 import { Location, Weather, Forecast } from "../../types";
+import * as dotenv from "dotenv";
 
-const API_KEY = "effaac890f5c4784bc5203412240906";
-const BASE_URL_FORECAST = "http://api.weatherapi.com/v1/forecast.json";
+dotenv.config();
+
+/* const API_KEY = "effaac890f5c4784bc5203412240906";
+const BASE_URL_FORECAST = "http://api.weatherapi.com/v1/forecast.json"; */
+const API_KEY = process.env.API_KEY as string;
+const BASE_URL = process.env.BASE_URL as string;
 
 export const get = async (req: Request, res: Response) => {
   const { country } = req.params;
 
   try {
-    const response = await axios.get(BASE_URL_FORECAST, {
+    const response = await axios.get(BASE_URL, {
       params: {
         key: API_KEY,
         q: country,

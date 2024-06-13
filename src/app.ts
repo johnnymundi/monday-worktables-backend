@@ -1,13 +1,13 @@
 import express from "express";
 import { router } from "./shared/routes/index";
 import cors from "cors";
+import * as dotenv from "dotenv";
 
-require("dotenv").config();
+dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
-// enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 
 app.use(express.json());
