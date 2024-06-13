@@ -7,7 +7,6 @@ const BASE_URL_FORECAST = "http://api.weatherapi.com/v1/forecast.json";
 
 export const get = async (req: Request, res: Response) => {
   const { country } = req.params;
-  console.log("params", country);
 
   try {
     const response = await axios.get(BASE_URL_FORECAST, {
@@ -60,8 +59,6 @@ export const get = async (req: Request, res: Response) => {
         windKPH: data.wind_kph,
       })),
     };
-
-    console.log("response", response.data);
 
     res.json({
       location: location,
