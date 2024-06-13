@@ -5,8 +5,6 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-/* const API_KEY = "effaac890f5c4784bc5203412240906";
-const BASE_URL_FORECAST = "http://api.weatherapi.com/v1/forecast.json"; */
 const API_KEY = process.env.API_KEY as string;
 const BASE_URL = process.env.BASE_URL as string;
 
