@@ -69,6 +69,12 @@ export const get = async (req: Request, res: Response) => {
       forecast: forecast,
     });
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch weather data" });
+    if (axios.isAxiosError(error)) {
+      res.status(error.response?.status || 500).json({
+        error: error.response?.data?.error || "Failed to fetch weather data",
+      });
+    } else {
+      res.status(500).json({ error: "An unexpected error occurred" });
+    }
   }
 };
